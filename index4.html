@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<script src="js/aframe.min.js"></script>
+<script src="js/aframe-ar.js"></script>
+<script src="js/aframe-extras.js"></script>
+
+<!-- position (x z y)-->
+<body style="margin : 0px; overflow: hidden;">
+
+<div style="position: fixed; top: 30px; width:100%; text-align: center; z-index: 1;color: red;">multimarker<br>
+<button onclick="myFunction1()">1</button>
+<button onclick="myFunction2()">2</button>
+<button onclick="myFunction3()">3</button>
+<button onclick="myFunction4()">4</button></div>
+
+	<a-scene embedded arjs="debugUIEnabled: false;">
+
+		<a-marker type="pattern" url="path/ARyA-pattern.patt">
+			<a-entity
+				id ="bot"
+				cursor-listener
+                scale="1 1 1"
+                position="0 0 0"
+                rotation="0 0 0"
+                animation-mixer="clip: idle"
+				json-model="src: url(models/bot4.json);">
+			</a-entity>
+			<!-- clip: (idle,run,walk,jump)-->
+		</a-marker>
+
+		<a-marker preset='hiro'>
+			<a-entity
+                scale="0.5 0.5 0.5"
+                position="0 0 0"
+                rotation="0 0 0"
+                animation-mixer="clip: elegir"
+				json-model="src: url(models/json_Tim/anim/Tim.json);">
+			</a-entity>
+			<!-- json_baston/baston -->
+			<!--salto-boltereta-->
+		</a-marker>
+
+		<a-marker preset='kanji'>
+			<a-entity
+				position="0 1 0"
+	            animation-mixer="clip: *;"
+	            gltf-model="src: url(https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/AnimatedMorphSphere/glTF/AnimatedMorphSphere.gltf);">
+	   		</a-entity>
+    	</a-marker>
+
+		<a-entity camera></a-entity>
+
+	</a-scene>
+
+	<script type="text/javascript">
+		//clip: idle - clabe de la animacion, burcar dentro del archivo Json
+		function myFunction1() {
+			var bot = document.getElementById("bot");
+			bot.setAttribute("animation-mixer", "clip: idle");
+		}
+		function myFunction2() {
+			var bot = document.getElementById("bot");
+			bot.setAttribute("animation-mixer", "clip: run");
+		}
+		function myFunction3() {
+			var bot = document.getElementById("bot");
+			bot.setAttribute("animation-mixer", "clip: walk");
+		}
+		function myFunction4() {
+			var bot = document.getElementById("bot");
+			bot.setAttribute("animation-mixer", "clip: jump");
+		}
+	</script>
+
+</body>
+</html>
